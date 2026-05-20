@@ -29,4 +29,15 @@ async function listarEquipamentos() {
     }
 }
 
+async function excluirEquipamento(id) {
+    try{
+        await fetch(`${url}/excluir/${id}`,{
+            method: "DELETE"
+        })
+
+        listarEquipamentos()
+    }catch(error)
+    
+}
+
 listarEquipamentos();
