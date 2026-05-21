@@ -40,4 +40,4 @@ async function excluirEquipamento(id) {
     
 }
 
-listarEquipamentos();
+listarEquipamentos(); /*a*/
