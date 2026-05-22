@@ -17,8 +17,8 @@ async function listarEquipamentos() {
         <td>${equipamento.marca}</td>
         <td>${equipamento.patrimonio}</td>
         <td>
-        <button class = "btn btn-warning btn-sm">Editar</button>
-        <button class = "btn btn-danger btn-sm">Excluir</button>
+        <button onclick class = "btn btn-warning btn-sm">Editar</button>
+        <button onclick "escluirEquipamento(equipamento.id)"class = "btn btn-danger btn-sm">Excluir</button>
         </td>
         </tr>`
 
@@ -36,8 +36,13 @@ async function excluirEquipamento(id) {
         })
 
         listarEquipamentos()
-    }catch(error)
-    
+
+    }
+    catch(error){
+        console.log(error);
+    }
+
 }
 
-listarEquipamentos(); /*a*/
+
+listarEquipamentos();

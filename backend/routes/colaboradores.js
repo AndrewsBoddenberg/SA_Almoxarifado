@@ -4,7 +4,7 @@ const router = express.Router();
 const connection = require("../database/connection")
 
 router.get("/listarTodos", (req, res) => {
-    const sql = "SELECT*FROM equipamentos";
+    const sql = "SELECT*FROM colaboradores";
 
     connection.query(sql, (error, result) => {
         if (error) {
@@ -15,10 +15,10 @@ router.get("/listarTodos", (req, res) => {
 })
 
 router.post("/criar", (req, res) => {
-    const { nome, marca, patrimonio } = req.body;
-    const sql = "INSERT INTO equipamentos (nome, marca, patrimonio) VALUES (?,?,?)"
+    const { nome, matricula, telefone, email } = req.body;
+    const sql = "INSERT INTO colaboradores (nome, matricula, telefone, email) VALUES (?,?,?,?)"
 
-    connection.query(sql, [nome, marca, patrimonio], (error) => {
+    connection.query(sql, [nome, matricula, telefone], (error) => {
         if (error) {
             return res.status(500).json(error);
         }
@@ -28,11 +28,11 @@ router.post("/criar", (req, res) => {
 })
 
 router.put("/editar/:id", (req, res) => {
-    const { nome, marca, patrimonio } = req.body
+    const { nome, marca, telefone, email } = req.body
     const { id } = req.params
-    const sql = "UPDATE equipamentos SET nome = ?, marca = ?, patrimonio = ? WHERE id = ?"
+    const sql = "UPDATE equipamentos SET nome = ?, marca = ?, telefone = ? email = ? WHERE id = ?"
 
-    connection.query(sql, [nome, marca, patrimonio, id], (error) => {
+    connection.query(sql, [nome, marca, telefone, email, id], (error) => {
         if (error) {
             return res.status(500).json(error);
         }
